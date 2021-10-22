@@ -1,12 +1,12 @@
+const shortid = require('shortid')
+const devices = require('../devices.json')
 
-import shortid from "shortid"
-import devices from "../devices.json"
 
-export function getDevices(req, res) {
+function getDevices(req, res) {
   res.json(devices)
 }
 
-export function addDevice(req, res) {
+function addDevice(req, res) {
   const { system_name, type, hdd_capacity } = req.body
   const newDevice = {
     id: shortid.generate(),
@@ -18,13 +18,13 @@ export function addDevice(req, res) {
   res.json(newDevice)
 }
 
-export function getDevice(req, res) {
+function getDevice(req, res) {
   const { id } = req.params
   const device = devices.find(d => d.id === id)
   res.json(device)
 }
 
-export function updateDevice(req, res) {
+function updateDevice(req, res) {
   const { id } = req.params
   const { system_name, type, hdd_capacity } = req.body
   let updated = false
@@ -39,7 +39,7 @@ export function updateDevice(req, res) {
   res.json(updated ? 1 : 0)
 }
 
-export function deleteDevice(req, res) {
+function deleteDevice(req, res) {
   const { id } = req.params
   let deleted = false
   devices.forEach((device, i) => {
@@ -49,4 +49,12 @@ export function deleteDevice(req, res) {
     }
   })
   res.json(deleted ? 1 : 0)
+}
+
+module.exports ={
+  getDevices,
+  addDevice,
+  getDevice,
+  updateDevice,
+  deleteDevice,
 }

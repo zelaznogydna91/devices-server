@@ -1,5 +1,5 @@
-import bodyParser from 'body-parser'
-import morgan from 'morgan'
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
 
 module.exports = app => {
   app.set('port', process.env.PORT || 7331)

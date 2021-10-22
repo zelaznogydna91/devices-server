@@ -1,4 +1,4 @@
-import { getDevices, addDevice, getDevice, updateDevice, deleteDevice } from '../controllers/devices'
+const { getDevices, addDevice, getDevice, updateDevice, deleteDevice } = require('../controllers/devices')
 
 module.exports = app => {
   app.route('/devices')
